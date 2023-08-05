@@ -9,9 +9,10 @@ module.exports = {
     colors: {
       "primary-100": "#222222",
       "primary-200": "#000000",
-      "secondary-100": "#AAAAAA",
-      "secondary-200": "#F6F8FA",
-      "secondary-300": "#999999",
+      "secondary-100": "#FFFFFF",
+      "secondary-200": "#AAAAAA",
+      "secondary-300": "#F6F8FA",
+      "secondary-400": "#999999",
       "accent-neutral": "#2F80ED",
       "accent-success": "#509900",
       "accent-warn": "#DB9000",
