@@ -1,16 +1,18 @@
 import { Card } from "@/components/Card";
-import { Testnet } from "@/components/Testnet";
+import { Testnet, TestnetCard } from "@/components/TestnetCard";
 
 export default function Home({ data }) {
   return (
     <div>
       <main className="mx-14 my-10 gap-6 flex flex-col">
         {data.testnet.map((testNet) => (
-          <Testnet
+          <TestnetCard
             key={testNet.id}
             name={testNet.name}
             status={testNet.status}
-          ></Testnet>
+            offChainActors={testNet.testnet_off_chain_actors}
+            chains={testNet.testnet_chains}
+          ></TestnetCard>
         ))}
       </main>
     </div>
