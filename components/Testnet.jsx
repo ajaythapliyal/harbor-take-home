@@ -1,10 +1,15 @@
 import { Card } from "./Card";
 import { TestnetAlert } from "./TestNetAlert";
 import Settings from "../public/icons/Settings.svg"
+import { isSettled } from "@/utils";
 
 export function Testnet({id, name, status, offChainActors, chains, updatedAt}){
     name = 'Santosh Testnet'
-    status= "PENDING"
+    status= "RUNNING"
+
+
+    const isTestnetSettled = isSettled(status)
+
     return <Card>
         <div className="flex flex-grow justify-between items-center">
             <div className="flex gap-4 items-center">
@@ -17,8 +22,8 @@ export function Testnet({id, name, status, offChainActors, chains, updatedAt}){
                 <div className="flex gap-9 items-center">
                     <TestnetAlert status={status}></TestnetAlert>
                     <div className="flex gap-1 items-center">
-                        <Settings className={`w-3 h-3 ${['RUNNING', "FAILED"].includes(status)? 'fill-accent-neutral' : 'fill-secondary-200'}`}></Settings>
-                        <p className={`text-sm font-semibold ${['RUNNING', "FAILED"].includes(status)? 'text-accent-neutral' : 'text-secondary-200'}`}>Settings</p>
+                        <Settings className={`w-3 h-3 ${isTestnetSettled ? 'fill-accent-neutral' : 'fill-secondary-200'}`}></Settings>
+                        <p className={`text-sm font-semibold ${isTestnetSettled ? 'text-accent-neutral' : 'text-secondary-200'}`}>Settings</p>
                     </div>
                 </div>
             </div>

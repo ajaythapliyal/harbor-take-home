@@ -1,20 +1,21 @@
 import RunningTick from "../public/icons/running_tick.svg"
 import Stopped from "../public/icons/stopped.svg"
 import Pending from "../public/icons/pending.svg"
+import { PENDING_STATE, RUNNING_STATE, STOPPED_STATE } from "@/utils"
 
 export function TestnetAlert({status}){
     const statusView = {
-        "RUNNING" : {
+        [RUNNING_STATE] : {
             color : "accent-success",
             title: "Running",
             icon : <RunningTick/>
         },
-        "STOPPED" : {
+        [STOPPED_STATE] : {
             color : "accent-invalid",
             title: "Stopped",
             icon : <Stopped/>
         },
-        "PENDING": {
+        [PENDING_STATE]: {
             color : "accent-warn",
             title: "Pending",
             icon : <Pending/>
