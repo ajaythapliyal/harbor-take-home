@@ -4,6 +4,7 @@ import Docs from "../public/icons/docs.svg"
 import CommandSheet from "../public/icons/command_sheet.svg"
 import UserKey from "../public/icons/user_key.svg"
 import Profile from "../public/icons/profile.svg"
+
 export function Header(){
     return <header className="bg-primary-100 px-5 py-2">
         <div className="flex gap-10 items-center text-secondary-200">

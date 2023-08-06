@@ -13,6 +13,7 @@ module.exports = {
       "secondary-200": "#AAAAAA",
       "secondary-300": "#F6F8FA",
       "secondary-400": "#999999",
+      "secondary-500": "#E5E5E5",
       "accent-neutral": "#2F80ED",
       "accent-success": "#509900",
       "accent-warn": "#DB9000",
@@ -21,6 +22,9 @@ module.exports = {
     },
     fontFamily: {
       sans: ["var(--font-harbor)"],
+    },
+    boxShadow: {
+      "dark-100": "0px 4px 6px 0px #0000000F",
     },
   },
   plugins: [],
