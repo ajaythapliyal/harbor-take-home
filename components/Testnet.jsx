@@ -4,10 +4,6 @@ import Settings from "../public/icons/Settings.svg"
 import { isSettled } from "@/utils";
 
 export function Testnet({id, name, status, offChainActors, chains, updatedAt}){
-    name = 'Santosh Testnet'
-    status= "RUNNING"
-
-
     const isTestnetSettled = isSettled(status)
 
     return <Card>
