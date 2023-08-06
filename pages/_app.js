@@ -1,4 +1,4 @@
-import { Header } from "@/components/Header";
+import { Header } from "@/components/base/Header";
 import "@/styles/globals.css";
 import "@/styles/normalize.css";
 import { Work_Sans } from "next/font/google";

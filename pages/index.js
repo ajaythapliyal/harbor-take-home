@@ -1,5 +1,4 @@
-import { Card } from "@/components/Card";
-import { Testnet, TestnetCard } from "@/components/TestnetCard";
+import { TestnetCard } from "@/components/TestnetCard";
 
 export default function Home({ data }) {
   return (
@@ -12,6 +11,7 @@ export default function Home({ data }) {
             status={testNet.status}
             offChainActors={testNet.testnet_off_chain_actors}
             chains={testNet.testnet_chains}
+            updatedAt={testNet.updated_at}
           ></TestnetCard>
         ))}
       </main>
