@@ -1,9 +1,9 @@
-import Harbor from "../../public/icons/harbor.svg"
-import Projects from "../../public/icons/projects.svg"
-import Docs from "../../public/icons/docs.svg"
-import CommandSheet from "../../public/icons/command_sheet.svg"
-import UserKey from "../../public/icons/user_key.svg"
-import Profile from "../../public/icons/profile.svg"
+import Harbor from "../public/icons/harbor.svg"
+import Projects from "../public/icons/projects.svg"
+import Docs from "../public/icons/docs.svg"
+import CommandSheet from "../public/icons/command_sheet.svg"
+import UserKey from "../public/icons/user_key.svg"
+import Profile from "../public/icons/profile.svg"
 
 export function Header(){
     return <header className="bg-primary-100 px-5 py-2 sticky top-0">
