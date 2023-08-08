@@ -1,13 +1,31 @@
-import { useState } from "react"
+import { useRef, useState, useEffect, useCallback } from "react"
 import  ArrowDown  from "../public/icons/arrow_down_short.svg";
+import { useOutsideAlerter } from "@/hooks";
 
 export function Dropdown({title, items, onChange}){
     const [selectedItemIndex, setSelectedItemIndex] = useState(0)
     const [isExpanded, setIsExpanded] = useState(false)
+    const ref = useRef(null);
+
+
+    const onClickOutside = useCallback(()=> setIsExpanded(false), [])
+
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+          if (ref.current && !ref.current.contains(event.target)) {
+            onClickOutside && onClickOutside();
+          }
+        };
+        document.addEventListener('click', handleClickOutside);
+        return () => {
+          document.removeEventListener('click', handleClickOutside);
+        };
+      }, [ onClickOutside ]);
 
 
     return <div className="flex flex-col relative">
-                <div className="flex gap-1 items-center cursor-pointer" onClick={()=>{
+                <div  ref={ref} className="flex gap-1 items-center cursor-pointer" onClick={()=>{
                     setIsExpanded(true)
                 }}>
                     <span className="text-sm font-medium text-secondary-400">{title}:</span> 
