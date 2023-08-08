@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from "react"
 import  ArrowDown  from "../public/icons/arrow_down_short.svg";
-import { useOutsideAlerter } from "@/hooks";
 
 export function Dropdown({title, items, onChange}){
     const [selectedItemIndex, setSelectedItemIndex] = useState(0)
