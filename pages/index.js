@@ -27,7 +27,7 @@ export default function Home({ data }) {
           <span className="font-bold text-2xl">
             Testnets ({data.testnet?.length ?? 0})
           </span>
-          <span className="text-accent-neutral text-base font-semibold flex gap-2 items-center">
+          <span className="text-accent-neutral text-base font-semibold flex gap-2 items-center cursor-pointer">
             <Add className="fill-accent-neutral"></Add>
             <span>New Testnet</span>
           </span>
@@ -58,7 +58,7 @@ export default function Home({ data }) {
           ></Dropdown>
         </div>
       </div>
-      <main className="mx-14 gap-6 flex flex-col">
+      <main className="mx-14 gap-6 flex flex-col mb-5">
         {data.testnet
           .filter((testNet) => {
             if (filterStatus) {

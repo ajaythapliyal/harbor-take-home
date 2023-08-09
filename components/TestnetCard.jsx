@@ -4,7 +4,7 @@ import Settings from "../public/icons/Settings.svg"
 import Clock from "../public/icons/clock.svg"
 import Pending from "../public/icons/pending.svg"
 import Dot from "../public/icons/dot.svg"
-import { PENDING_STATE, blockchainIconMapper, isSettled, timeDifference } from "@/utils";
+import { PENDING_STATE, STOPPED_STATE, blockchainIconMapper, isSettled, timeDifference } from "@/utils";
 import Image from "next/image";
 
 export function TestnetCard({id, name, status, offChainActors, chains, updatedAt}){
@@ -13,7 +13,7 @@ export function TestnetCard({id, name, status, offChainActors, chains, updatedAt
     const offChainActorsUpdating = offChainActors.filter(offChainActor => offChainActor.status === PENDING_STATE)
     const chainsUpdating = chains.filter(chain => chain.status === PENDING_STATE)
 
-    return <Card>
+    return <Card isDisabled={status === STOPPED_STATE}>
             <div className="flex flex-col flex-grow gap-2">
                 <div className="flex flex-grow justify-between items-center">
                     <div className="flex gap-4 items-center">
@@ -23,18 +23,20 @@ export function TestnetCard({id, name, status, offChainActors, chains, updatedAt
                         </div>
                     </div>
                     <div>
-                        <div className="flex gap-9 items-center">
+                        <div className="flex gap-4 items-center">
                             <TestnetAlert status={status}></TestnetAlert>
-                                <div className="flex gap-1 items-center">
-                                    <Settings className={`w-3 h-3 ${isTestnetSettled ? 'fill-accent-neutral' : 'fill-secondary-200'}`}></Settings>
+                            <Dot/>
+                                <div className={`flex gap-1 items-center ${isTestnetSettled? 'cursor-pointer' : 'cursor-not-allowed'}`}>
+                                    <Settings className={`w-3 h-3 ${isTestnetSettled ? 'fill-accent-neutral' : 'fill-secondary-200'}`}/>
                                     <p className={`text-sm font-semibold ${isTestnetSettled ? 'text-accent-neutral' : 'text-secondary-200'}`}>Settings</p>
                                 </div>
                         </div>
                     </div>
                 </div>
                 <div className="flex justify-between text-sm font-medium items-center">
-                    <div className="flex gap-7 items-center">
+                    <div className="flex gap-3 items-center">
                         <p className="text-sm font-medium">{offChainActors?.length ?? 0} off-chain actors</p>
+                        <Dot/>
                         <div className="flex gap-3 items-center">
                             <p>{chains?.length ?? 0}{ ` Blockchain${chains.length > 1 ? 's':''}`}</p>
                             <div className="flex">
@@ -56,7 +58,7 @@ export function TestnetCard({id, name, status, offChainActors, chains, updatedAt
                 <div className="flex gap-3 items-center">
                     {offChainActorsUpdating.length > 0 ? <span className="font-semibold text-sm text-accent-warn flex gap-1 items-center"><Pending></Pending>{offChainActorsUpdating.length} off-chain updating</span>:null}
                     {offChainActorsUpdating.length > 0 && chainsUpdating.length > 0 ? <Dot/> :null}
-                    {chainsUpdating.length > 0? <span className="font-semibold text-sm text-accent-warn flex gap-1 items-center"><Pending></Pending>{chainsUpdating.length} Blockchains updating</span> : null}
+                    {chainsUpdating.length > 0? <span className="font-semibold text-sm text-accent-warn flex gap-1 items-center"><Pending></Pending>Blockchains updating</span> : null}
                 </div>
             </div>
         </Card>
