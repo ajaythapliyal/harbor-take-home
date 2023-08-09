@@ -88,7 +88,7 @@ export default function Testnets({ data }) {
 
 export async function getStaticProps() {
   const response = await fetch(
-    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/data`
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/data`
   );
   const { data } = await response.json();
   return { props: { data } };
