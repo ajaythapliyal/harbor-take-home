@@ -1,12 +1,12 @@
 import { Dropdown } from "@/components/Dropdown";
 import { TestnetAlert } from "@/components/TestnetAlert";
 import { TestnetCard } from "@/components/TestnetCard";
-import AllStatus from "../public/icons/all_status.svg";
-import Add from "../public/icons/Add.svg";
+import AllStatus from "../../public/icons/all_status.svg";
+import Add from "../../public/icons/Add.svg";
 import { useState } from "react";
 import { sortMapper } from "@/utils";
 
-export default function Home({ data }) {
+export default function Testnets({ data }) {
   const [filterStatus, setfilterStatus] = useState(undefined);
   const [sortKey, setSortKey] = useState(sortItems[0].item);
 
