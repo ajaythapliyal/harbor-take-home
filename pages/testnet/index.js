@@ -87,7 +87,7 @@ export default function Testnets({ data }) {
 }
 
 export async function getStaticProps() {
-  const response = await fetch("http://localhost:3000/api/data");
+  const response = await fetch(`${process.env.BASE_URL}/api/data`);
   const { data } = await response.json();
   return { props: { data } };
 }
