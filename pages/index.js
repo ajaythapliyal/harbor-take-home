@@ -2,56 +2,9 @@ import { Dropdown } from "@/components/Dropdown";
 import { TestnetAlert } from "@/components/TestnetAlert";
 import { TestnetCard } from "@/components/TestnetCard";
 import AllStatus from "../public/icons/all_status.svg";
+import Add from "../public/icons/Add.svg";
 import { useState } from "react";
 import { sortMapper } from "@/utils";
-
-const sortItems = [
-  {
-    item: "NameAZ",
-    type: "string",
-    key: "name",
-    itemView: (
-      <span className="text-sm font-bold text-accent-invalid">Name A-Z</span>
-    ),
-  },
-  {
-    item: "NameZA",
-    type: "string",
-    key: "name",
-    multiplier: -1,
-    itemView: (
-      <span className="text-sm font-bold text-accent-invalid">Name Z-A</span>
-    ),
-  },
-  {
-    item: "STATUS",
-    type: "string",
-    key: "status",
-    itemView: (
-      <span className="text-sm font-bold text-accent-invalid">Status</span>
-    ),
-  },
-  {
-    item: "CREATE",
-    type: "date",
-    key: "created_at",
-    itemView: (
-      <span className="text-sm font-bold text-accent-invalid">
-        Date created
-      </span>
-    ),
-  },
-  {
-    item: "MODIFIED",
-    type: "date",
-    key: "updated_at",
-    view: (
-      <span className="text-sm font-bold text-accent-invalid">
-        Last modified
-      </span>
-    ),
-  },
-];
 
 export default function Home({ data }) {
   const [filterStatus, setfilterStatus] = useState(undefined);
@@ -70,9 +23,15 @@ export default function Home({ data }) {
   return (
     <div className="flex flex-col">
       <div className="sticky top-[60px] bg-secondary-300 mx-14 pt-10 pb-5 flex justify-between">
-        <span className="font-bold text-2xl">
-          Testnets ({data.testnet?.length ?? 0})
-        </span>
+        <div className="flex gap-5 items-center">
+          <span className="font-bold text-2xl">
+            Testnets ({data.testnet?.length ?? 0})
+          </span>
+          <span className="text-accent-neutral text-base font-semibold flex gap-2 items-center">
+            <Add className="fill-accent-neutral"></Add>
+            <span>New Testnet</span>
+          </span>
+        </div>
         <div className="flex gap-7">
           <Dropdown
             title={"Filter by"}
@@ -132,3 +91,51 @@ export async function getStaticProps() {
   const { data } = await response.json();
   return { props: { data } };
 }
+
+const sortItems = [
+  {
+    item: "NameAZ",
+    type: "string",
+    key: "name",
+    itemView: (
+      <span className="text-sm font-bold text-accent-invalid">Name A-Z</span>
+    ),
+  },
+  {
+    item: "NameZA",
+    type: "string",
+    key: "name",
+    multiplier: -1,
+    itemView: (
+      <span className="text-sm font-bold text-accent-invalid">Name Z-A</span>
+    ),
+  },
+  {
+    item: "STATUS",
+    type: "string",
+    key: "status",
+    itemView: (
+      <span className="text-sm font-bold text-accent-invalid">Status</span>
+    ),
+  },
+  {
+    item: "CREATE",
+    type: "date",
+    key: "created_at",
+    itemView: (
+      <span className="text-sm font-bold text-accent-invalid">
+        Date created
+      </span>
+    ),
+  },
+  {
+    item: "MODIFIED",
+    type: "date",
+    key: "updated_at",
+    itemView: (
+      <span className="text-sm font-bold text-accent-invalid">
+        Last modified
+      </span>
+    ),
+  },
+];
